@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+    <!-- Replace with your desired layout for each item in the RecyclerView -->
+
+    <LinearLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:visibility="gone"
+        android:background="@color/grey"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Punch-In"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Punch-Out"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:textStyle="bold" />
+        <!-- Add other views here if needed -->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/title_layout"
+        android:background="@color/grey"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="14sp"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+        />
+
+        <TextView
+            android:id="@+id/punchin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Punch-In"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+         />
+        <TextView
+            android:id="@+id/punchOut"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Punch-Out"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+    />
+        <!-- Add other views here if needed -->
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
