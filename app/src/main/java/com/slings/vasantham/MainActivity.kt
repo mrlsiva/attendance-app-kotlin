@@ -3,30 +3,28 @@ package com.slings.vasantham
 import android.content.Intent
 import android.os.Bundle
 import android.os.StrictMode
-import android.view.Menu
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
-import androidx.navigation.ui.NavigationUI
-import com.google.gson.Gson
-import com.slings.vasantham.data.model.AttendanceLogResponse
+import com.google.android.material.navigation.NavigationView
 import com.slings.vasantham.databinding.ActivityMainBinding
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import org.json.JSONObject
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,8 +38,23 @@ class MainActivity : AppCompatActivity() {
         StrictMode.setThreadPolicy(policy)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        val drawerArrow = DrawerArrowDrawable(this)
+//        drawerArrow.color = resources.getColor(R.color.black,null)
+//                yourImageView.setImageDrawable(drawerArrow)
         setSupportActionBar(binding.appBarMain.toolbar)
+
+        supportActionBar!!.setDisplayHomeAsUpEnabled(false);
+        supportActionBar!!.setHomeButtonEnabled(false);
+
+        val inflater = LayoutInflater.from(this)
+        val customTitleView: View = inflater.inflate(R.layout.custom_toolbar_title, null)
+
+// Set the custom view as the title
+        val customTitleTextView = customTitleView.findViewById<TextView>(R.id.toolbar_title)
+        customTitleTextView.text = getString(R.string.app_name)
+// Set the custom view as the title
+//        supportActionBar!!.customView = customTitleView
+
         try {
             val formBody: RequestBody = FormBody.Builder()
                 .add("userId", Util.getPreference(applicationContext.applicationContext,"userId","").toString())

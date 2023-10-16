@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatEditText
 import com.google.android.material.textfield.TextInputEditText
 import com.slings.vasantham.Common.Companion.URL
 import okhttp3.FormBody
@@ -18,8 +20,8 @@ import org.json.JSONObject
 class LoginActivity : AppCompatActivity() {
 
     private val client = OkHttpClient()
-    lateinit var usernameEditText: TextInputEditText
-    lateinit var passwordEditText: TextInputEditText
+    lateinit var usernameEditText: AppCompatEditText
+    lateinit var passwordEditText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +29,8 @@ class LoginActivity : AppCompatActivity() {
         val policy = ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
         val submitBtn = findViewById<Button>(R.id.submitBtn)
-        usernameEditText = findViewById<TextInputEditText>(R.id.usernameEditText)
-        passwordEditText = findViewById<TextInputEditText>(R.id.passwordEditText)
+        usernameEditText = findViewById<AppCompatEditText>(R.id.usernameEditText)
+        passwordEditText = findViewById<EditText>(R.id.passwordEditText)
 
         // Set the click listener for the submit button
         submitBtn.setOnClickListener {

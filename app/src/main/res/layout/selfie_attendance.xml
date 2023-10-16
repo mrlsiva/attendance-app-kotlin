@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:theme="@style/Theme.VasanthamXM.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:titleTextColor="@color/black"
+            app:title="Go Back"
+            app:navigationIcon="@drawable/back"
+            app:popupTheme="@style/Theme.VasanthamXM.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -16,43 +37,40 @@
             android:layout_height="match_parent" />
 
         <!-- "Take Selfie" button and "Go Back" TextView -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="16dp">
-
-            <Button
-                android:id="@+id/btnTakeSelfie"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Take Selfie"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:paddingEnd="60dp"
-                android:paddingStart="60dp"
-                android:textColor="@color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/tvGoBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Go Back"
-                android:layout_marginTop="30dp"
-                android:textStyle="bold"
-                android:textColor="@color/white"/>
-
-        </LinearLayout>
 
     </FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/btnTakeSelfie"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:src="@drawable/camera_capture"
+            android:clickable="true"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_centerInParent="true"
+            android:contentDescription="Take Selfie" />
+
+        <ImageView
+            android:id="@+id/tvGoBack"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:src="@drawable/camera_switch"
+            android:clickable="true"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/btnTakeSelfie"
+            android:contentDescription="Take Selfie" />
+
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

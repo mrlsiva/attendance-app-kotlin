@@ -21,7 +21,7 @@ class SplashScreen : AppCompatActivity() {
                 // Permissions are already granted, proceed with a delay
                 delayAndContinue()
             } else {
-                requestCameraStoragePermissions()
+                requestCameraAndWriteStoragePermissions()
             }
         } else {
             if (hasCameraAndWriteStoragePermissions()) {

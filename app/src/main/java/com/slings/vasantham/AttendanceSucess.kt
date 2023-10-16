@@ -3,9 +3,12 @@ package com.slings.vasantham
 import android.content.Intent
 import android.os.Bundle
 import android.os.StrictMode
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.constraintlayout.widget.ConstraintLayout
 import okhttp3.OkHttpClient
 import java.text.ParseException
 
@@ -21,6 +24,12 @@ class AttendanceSucess : AppCompatActivity() {
         val goHome = findViewById<Button>(R.id.goHome)
         val success = findViewById<TextView>(R.id.success)
 
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        toolbar.title = "Go Back"
+
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true);
+        supportActionBar!!.setDisplayShowHomeEnabled(true);
 
         try {
 
@@ -37,35 +46,15 @@ class AttendanceSucess : AppCompatActivity() {
             finish()
         }
     }
-
-    /* fun getTimeDifferenceAgo(time1: String, time2: String): String {
-         val dateTimeFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-         val timeFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
-
-         val time1Date = timeFormat.parse(time1)
-         val time2Date = dateTimeFormat.parse(time2)
-
-         val calendar1 = Calendar.getInstance()
-         calendar1.time = time1Date
-
-         val calendar2 = Calendar.getInstance()
-         calendar2.time = time2Date
-
-         val isTime2BeforeTime1 = calendar2.get(Calendar.HOUR_OF_DAY) < calendar1.get(Calendar.HOUR_OF_DAY) ||
-                 (calendar2.get(Calendar.HOUR_OF_DAY) == calendar1.get(Calendar.HOUR_OF_DAY) &&
-                         calendar2.get(Calendar.MINUTE) < calendar1.get(Calendar.MINUTE))
-
-         if (isTime2BeforeTime1) {
-             return "" // Return empty string if time2 is earlier than time1
-         }
-
-         val hoursDifference = calendar2.get(Calendar.HOUR_OF_DAY) - calendar1.get(Calendar.HOUR_OF_DAY)
-         val minutesDifference = calendar2.get(Calendar.MINUTE) - calendar1.get(Calendar.MINUTE)
-
-         return when {
-             hoursDifference > 0 -> "$hoursDifference hrs $minutesDifference mins late"
-             minutesDifference > 0 -> "$minutesDifference mins late"
-             else -> "Just now"
-         }
-     }*/
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == android.R.id.home) {
+            // Handle the back button press here
+            val intent = Intent(this, AttendanceSuccessDetail::class.java)
+            startActivity(intent)
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

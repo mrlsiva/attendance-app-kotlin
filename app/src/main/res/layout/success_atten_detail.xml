@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbar_appbar"
+        android:layout_height="@dimen/toolbar_height"
+        android:theme="@style/Theme.VasanthamXM.AppBarOverlay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:navigationIcon="@drawable/back"
+            app:popupTheme="@style/Theme.VasanthamXM.PopupOverlay"
+            app:title="Go Back"
+            app:titleTextColor="@color/black" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_appbar"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_70sdp"
+            android:background="@color/white"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#F5F6FA"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:contentDescription="@string/nav_header_desc"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    app:srcCompat="@drawable/menu_user_profile" />
+
+                <TextView
+                    android:id="@+id/atten_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_toRightOf="@+id/imageView"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:text="@string/nav_header_title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/atten_desgn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/atten_name"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_toRightOf="@+id/imageView"
+                    android:paddingBottom="@dimen/nav_header_vertical_spacing"
+                    android:text="@string/nav_header_subtitle"
+                    android:textColor="@color/black" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/divider_line"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewCurrentTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_weight="1.8"
+                    android:gravity="start"
+                    android:lineSpacingExtra="@dimen/_5sdp"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/tv_place"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="0.2"
+                    android:gravity="start"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/calendar_icon" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/punchLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_button_white_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp">
+
+                    <TextView
+                        android:id="@+id/startTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/logoImageView"
+                        android:text="Shift Start at"
+                        android:textColor="@color/purple_500"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/punchToday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/logoImageView"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/poppinsextrabold"
+                        android:text="00:00"
+                        android:textColor="@color/font_color"
+                        android:textColorHint="@android:color/darker_gray" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/punchL"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_button_white_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp">
+
+                    <TextView
+                        android:id="@+id/startTim1e"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/logoImageView"
+                        android:text="Permissionn"
+                        android:textColor="@color/purple_500"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/pun1chToday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/logoImageView"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/poppinsextrabold"
+                        android:text="00:00"
+                        android:textColor="@color/font_color"
+                        android:textColorHint="@android:color/darker_gray" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/punchLayout2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_button_white_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp">
+
+                    <TextView
+                        android:id="@+id/startTime2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/logoImageView"
+                        android:text="Shift Close at"
+                        android:textColor="@color/purple_500"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/punchToday2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="12dp"
+                        android:layout_below="@+id/logoImageView"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/poppinsextrabold"
+                        android:text="00:00"
+                        android:textColor="@color/font_color"
+                        android:textColorHint="@android:color/darker_gray" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="0dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/textViewShiftTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="left"
+            android:lineSpacingExtra="@dimen/_5sdp"
+            android:text="Overview"
+            android:textColor="@color/purple_700"
+            android:textSize="16sp" />
+
+        <com.transferwise.sequencelayout.SequenceLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:progressForegroundColor="@color/theme_blue">
+
+            <com.transferwise.sequencelayout.SequenceStep
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:anchor=""
+                app:anchorMaxWidth="@dimen/_10sdp"
+                app:title="08:30:00 AM" />
+
+            <com.transferwise.sequencelayout.SequenceStep
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:anchorMaxWidth="@dimen/_10sdp"
+                app:title="Actual Check in" />
+
+            <com.transferwise.sequencelayout.SequenceStep
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:anchorMaxWidth="@dimen/_10sdp"
+                app:active="true"
+                app:anchor=""
+                app:subtitle="Current Time"
+                app:title="02:25:04 PM"
+                app:titleTextAppearance="@style/TextAppearance.AppCompat.Title" />
+
+            <com.transferwise.sequencelayout.SequenceStep
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="06:30:00 PM" />
+
+            <com.transferwise.sequencelayout.SequenceStep
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:anchor=""
+                app:anchorMaxWidth="@dimen/_10sdp"
+                app:title="Check Out" />
+        </com.transferwise.sequencelayout.SequenceLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/botton_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_layout_camera"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/retake"
+            style="@style/CardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_round_border"
+            android:text="Attendance Log"
+            android:textColor="@color/theme_blue" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/upload"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_button"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Home"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

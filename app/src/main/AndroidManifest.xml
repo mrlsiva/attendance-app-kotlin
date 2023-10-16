@@ -8,11 +8,9 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32" />
+        android:name="android.permission.READ_EXTERNAL_STORAGE"  android:maxSdkVersion="32"/>
     <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32" />
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"  android:maxSdkVersion="32"/>
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -23,7 +21,6 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:largeHeap="true"
         android:hardwareAccelerated="true"
@@ -35,7 +32,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.VasanthamXM.NoActionBar"></activity>
+            android:theme="@style/Theme.VasanthamXM.NoActionBar"/>
         <activity
             android:name=".LoginActivity"
             android:exported="true"
@@ -50,7 +47,7 @@
             android:name=".ui.attendance.SelfConfirmActivity"
             android:exported="true"
             android:label="Self Confirm Activity"
-            android:theme="@style/Theme.VasanthamXM.NoActionBar" />
+            android:theme="@style/Theme.VasanthamXM.NoActionBar"/>
         <activity
             android:name=".AttendanceSucess"
             android:exported="true"
@@ -60,6 +57,11 @@
         </activity>
         <activity
             android:name=".LogsActivity"
+            android:exported="true"
+            android:label="Self Confirm Activity"
+            android:theme="@style/Theme.VasanthamXM.NoActionBar" />
+        <activity
+            android:name=".AttendanceSuccessDetail"
             android:exported="true"
             android:label="Self Confirm Activity"
             android:theme="@style/Theme.VasanthamXM.NoActionBar" />

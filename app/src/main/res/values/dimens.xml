@@ -8,4 +8,9 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="fragment_horizontal_margin">16dp</dimen>
     <dimen name="fragment_vertical_margin">16dp</dimen>
+
+    <dimen name="toolbar_height">@dimen/_42sdp</dimen>
+    <dimen name="bottom_layout_camera">@dimen/_60sdp</dimen>
+
+    <dimen name="dash_menu_icon_size">@dimen/_24sdp</dimen>
 </resources>

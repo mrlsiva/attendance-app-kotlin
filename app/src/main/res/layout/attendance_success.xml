@@ -5,38 +5,75 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.VasanthamXM.AppBarOverlay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:navigationIcon="@drawable/back"
+            app:popupTheme="@style/Theme.VasanthamXM.PopupOverlay"
+            app:title="Go Back"
+            app:titleTextColor="@color/black" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
         android:background="@color/white"
         android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            app:srcCompat="@drawable/thank" />
 
         <TextView
             android:id="@+id/success"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="Thank you!"
             android:textColor="@color/purple_700"
-            android:textSize="18sp"
-            android:text="Thank you..!"
-            android:gravity="center" />
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/success_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="Your photo uploaded Success full"
+            android:textColor="@color/purple_700"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/goHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="98dp"
+            android:background="@drawable/rounded_button"
             android:paddingStart="48dp"
             android:paddingEnd="48dp"
             android:text="GO HOME"
-            android:background="@drawable/rounded_button"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:visibility="gone" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

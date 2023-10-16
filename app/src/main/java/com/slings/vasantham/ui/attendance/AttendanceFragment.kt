@@ -14,8 +14,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import cn.pedant.SweetAlert.SweetAlertDialog
 import cn.pedant.SweetAlert.SweetAlertDialog.OnSweetClickListener
+import com.bumptech.glide.Glide
 import com.slings.vasantham.Common
 import com.slings.vasantham.MainActivity
+import com.slings.vasantham.R
 import com.slings.vasantham.Util
 import com.slings.vasantham.databinding.AttendanceFragmentBinding
 import com.slings.vasantham.ui.gallery.GalleryViewModel
@@ -46,11 +48,13 @@ class AttendanceFragment : Fragment() {
         StrictMode.setThreadPolicy(policy)
         _binding = AttendanceFragmentBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+//        binding.punchInBtn.setImageResource(R.drawable.circular_background);
         val pDialog = SweetAlertDialog(activity, SweetAlertDialog.PROGRESS_TYPE)
         pDialog.titleText = "Loading"
         pDialog.setCancelable(true)
         pDialog.show()
-        val dateFormat = SimpleDateFormat("dd-MM-yyyy | hh:mm a", Locale.getDefault())
+        val dateFormat = SimpleDateFormat("EEEE, MMMM dd, yyyy", Locale.getDefault())
         val currentTime = dateFormat.format(Date())
         try {
             val formBody: RequestBody = FormBody.Builder()
@@ -65,16 +69,18 @@ class AttendanceFragment : Fragment() {
                 val response = client.newCall(request).execute()
                 val responseBody = response.body?.string()
                 val json = JSONObject(responseBody)
-                binding.textViewCurrentTime.text = "Hi, "+Util.getPreference(requireActivity()
-                    .applicationContext,"username","") +"\n" +
-                        "Welcomes to Vasantham\n"+currentTime
+                binding.attenName.text = "Hi, "+Util.getPreference(requireActivity()
+                    .applicationContext,"username","")
+                binding.attenDesgn.text = "Welcomes to Vasantham"
+                binding.textViewCurrentTime.text = currentTime
+                binding.tvPlace.text = "Chennai"
 
                 // Set shift time with bold text
-                val shiftTimeText = "Today's \n your Shift time is \n "+Util.getPreference(requireActivity()
+                val shiftTimeText = "Your Shift time is: "+Util.getPreference(requireActivity()
                     .applicationContext,"shiftname","")
                 if(Util.getPreference(requireActivity()
                         .applicationContext,"shiftname","").equals("Not Yet Allocated")){
-                    binding.punchToday.visibility = View.GONE
+                    binding.punchLayout.visibility = View.GONE
                 }
                 val spannableString = SpannableString(shiftTimeText)
                 val boldStyleSpan = StyleSpan(Typeface.BOLD)
@@ -89,7 +95,7 @@ class AttendanceFragment : Fragment() {
             e.printStackTrace()
         }
 
-        binding.punchToday.setOnClickListener {
+        binding.punchLayout.setOnClickListener {
             if(binding.punchToday.text.toString() == "Punch In"){
                 val intent = Intent(activity, SelfieAttendance::class.java)
                 startActivity(intent)
@@ -155,18 +161,19 @@ class AttendanceFragment : Fragment() {
                 val responseBody = response.body?.string()
                 val json = JSONObject(responseBody)
                 val data = json.getJSONObject("data")
-//                if (data.getInt("atStatus") == 0) {
-//                    binding.punchToday.visibility = View.GONE
-//                } else if (data.getInt("atStatus") == 1) {
-//                    binding.punchToday.text = "Punch In"
-//                    binding.punchToday.visibility = View.VISIBLE
-//                } else if (data.getInt("atStatus") == 2) {
-//                    binding.punchToday.text = "Punch out"
-//                    binding.punchToday.visibility = View.VISIBLE
-//                } else {
-//                    binding.punchToday.visibility = View.GONE
-//                    binding.attendanceTaken.visibility = View.VISIBLE
-//                }
+               if (data.getInt("atStatus") == 0) {
+                    binding.punchLayout.visibility = View.GONE
+                } else if (data.getInt("atStatus") == 1) {
+                    binding.punchToday.text = "Punch In"
+                    binding.punchLayout.visibility = View.VISIBLE
+                } else if (data.getInt("atStatus") == 2) {
+                    binding.punchToday.text = "Punch out"
+                   binding.punchInBtn.setImageResource(R.drawable.circular_background_red)
+                    binding.punchLayout.visibility = View.VISIBLE
+                } else {
+                    binding.punchLayout.visibility = View.GONE
+                    binding.attendanceTaken.visibility = View.VISIBLE
+                }
                 pDialog.dismiss()
             } catch (e: Exception) {
                 e.printStackTrace()

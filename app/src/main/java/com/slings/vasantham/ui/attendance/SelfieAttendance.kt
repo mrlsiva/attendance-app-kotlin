@@ -7,11 +7,13 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
+import android.view.MenuItem
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -42,9 +44,15 @@ class SelfieAttendance : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.selfie_attendance)
 
-        val btnTakeSelfie = findViewById<Button>(R.id.btnTakeSelfie)
-        val tvGoBack = findViewById<TextView>(R.id.tvGoBack)
+        val btnTakeSelfie = findViewById<ImageView>(R.id.btnTakeSelfie)
+        val tvGoBack = findViewById<ImageView>(R.id.tvGoBack)
         val cameraView = findViewById<PreviewView>(R.id.cameraView)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true);
+        supportActionBar!!.setDisplayShowHomeEnabled(true);
+
+        toolbar.title = "Go Back"
         // Initialize the camera view and the "Take Selfie" button
         // (Assuming you have added necessary dependencies for CameraX)
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
@@ -70,15 +78,8 @@ class SelfieAttendance : AppCompatActivity() {
                 camera = cameraProvider.bindToLifecycle(
                     this, cameraSelector, preview, imageCapture
                 )
-
-                // Set up the "Take Selfie" button click listener
                 btnTakeSelfie.setOnClickListener {
                     takePicture()
-                }
-
-                // Set up the "Go Back" TextView click listener
-                tvGoBack.setOnClickListener {
-                    finish()
                 }
             } catch (exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)
@@ -88,9 +89,9 @@ class SelfieAttendance : AppCompatActivity() {
         // Initialize the cameraExecutor for background tasks
         cameraExecutor = Executors.newSingleThreadExecutor()
 
-        // Set up the "Take Selfie" button click listener
         btnTakeSelfie.setOnClickListener {
             takePicture()
+            Toast.makeText(this, "ImageView Clicked!", Toast.LENGTH_SHORT).show()
         }
 
         // Set up the "Go Back" TextView click listener
@@ -133,13 +134,32 @@ class SelfieAttendance : AppCompatActivity() {
             })
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == android.R.id.home) {
+            // Handle the back button press here
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
     private fun getOutputFile(): File {
-        val photoFile = File.createTempFile(
+        try{
+            return File.createTempFile(
+                "image",
+                ".jpg",
+                getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
+            )
+        }catch (e:Exception) {
+            e.printStackTrace()
+        }
+        return File.createTempFile(
             "image",
             ".jpg",
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+            getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
         )
-        return photoFile
     }
 
     private fun showNextActivity(output: ImageCapture.OutputFileResults) {
@@ -148,9 +168,9 @@ class SelfieAttendance : AppCompatActivity() {
         capturedImage?.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
         val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
         val iStream = contentResolver.openInputStream(output.savedUri!!)
-        val inputData: ByteArray = getBytes(iStream!!)!!
+//        val inputData: ByteArray = getBytes(iStream!!)!!
         val intent = Intent(this, SelfConfirmActivity::class.java)
-        intent.putExtra("capturedImage", inputData)
+//        intent.putExtra("capturedImage", inputData)
         intent.putExtra("imageURL", outputFile.absolutePath)
         intent.putExtra("imagename", outputFile.name)
         startActivity(intent)
@@ -160,7 +180,7 @@ class SelfieAttendance : AppCompatActivity() {
     @Throws(IOException::class)
     fun getBytes(inputStream: InputStream): ByteArray? {
         val byteBuffer = ByteArrayOutputStream()
-        val bufferSize = 1024
+        val bufferSize = 4096
         val buffer = ByteArray(bufferSize)
         var len = 0
         while (inputStream.read(buffer).also { len = it } != -1) {

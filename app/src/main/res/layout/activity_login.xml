@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-   >
+    android:background="@color/white">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -23,77 +22,150 @@
         <!-- Username InputLayout -->
         <ImageView
             android:id="@+id/logoImageView"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/_200sdp"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_120sdp"
             android:layout_marginBottom="16dp"
             android:background="@color/white"
             android:scaleType="fitCenter"
-            android:src="@drawable/logo2" />
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/splash_logo" />
 
         <TextView
+            android:id="@+id/title1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome Back!"
+            android:layout_marginTop="20dp"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_below="@+id/logoImageView"
+            android:textColorHint="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title1"
+            android:textSize="@dimen/_11sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Please Login in to continue."
+            android:textColor="@color/purple_700"
+            android:textColorHint="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/title3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Username"
-            android:textColor="@color/purple_700"
-            android:layout_marginTop="-50dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_below="@+id/title2"
+            android:textColor="@color/black"
             android:textColorHint="@android:color/darker_gray" />
 
-        <com.google.android.material.textfield.TextInputLayout
+ <!--       <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/usernameInputLayout"
             style="@style/NoBottomLineTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
-            android:layout_marginBottom="8dp">
+            app:hintEnabled="false"
+            android:layout_below="@+id/title3"
+            android:layout_marginBottom="8dp">-->
 
-            <com.google.android.material.textfield.TextInputEditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/usernameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:textColorHint="@color/purple_500"
+                android:paddingTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingStart="@dimen/_10sdp"
+                android:hint="Enter user name"
+                android:layout_below="@+id/title3"
                 android:background="@drawable/edittext_rounded_border" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+     <!--   </com.google.android.material.textfield.TextInputLayout>-->
 
         <!-- Password InputLayout -->
         <TextView
+            android:id="@+id/title4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Password"
-            android:textColor="@color/purple_700"
+            android:textStyle="bold"
+            android:layout_below="@+id/usernameEditText"
+            android:textColor="@color/black"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColorHint="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/for_pass_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password?"
+            android:gravity="right"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/usernameEditText"
+            android:textColor="@color/theme_blue"
             android:layout_marginTop="15dp"
             android:textColorHint="@android:color/darker_gray" />
 
-        <com.google.android.material.textfield.TextInputLayout
+
+<!--        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordInputLayout"
             style="@style/NoBottomLineTextInputLayout"
             android:layout_width="match_parent"
+            android:layout_below="@+id/title4"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
             android:gravity="center"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp">-->
 
-            <com.google.android.material.textfield.TextInputEditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/passwordEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:hint="Enter password"
+                android:textColorHint="@color/purple_500"
+                android:layout_below="@+id/title4"
+                android:paddingTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingStart="@dimen/_10sdp"
                 android:background="@drawable/edittext_rounded_border"
                 android:inputType="textPassword" />
 
 
-        </com.google.android.material.textfield.TextInputLayout>
-
+       <!-- </com.google.android.material.textfield.TextInputLayout>
+-->
         <!-- Submit Button -->
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/submitBtn"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:paddingTop="15dp"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_below="@+id/passwordEditText"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:paddingBottom="15dp"
-            android:text="login" />
+            android:background="@drawable/rounded_button"
+            android:text="Login" />
 
-    </LinearLayout>
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

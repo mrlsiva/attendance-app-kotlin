@@ -1,59 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment"
-    android:background="@color/white">
+    android:background="@color/dash_back_color"
+    tools:context=".ui.home.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="top"
+        android:orientation="vertical">
 
-        <!-- ATTENDANCE Button -->
-        <Button
-            android:id="@+id/attendanceButton"
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:paddingStart="48dp"
-            android:paddingEnd="48dp"
-            android:text="ATTENDANCE"
-            android:background="@drawable/rounded_button"
-            android:textColor="#FFFFFF" />
+            android:layout_below="@+id/logoImageView"
+            android:layout_marginTop="@dimen/_60sdp"
+            android:text="System tools"
+            android:textColor="@color/purple_500"
+            android:textColorHint="@android:color/darker_gray"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/_15sdp"/>
 
-        <!-- PERMISSION Button -->
-        <Button
-            android:id="@+id/permissionButton"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:paddingStart="48dp"
-            android:layout_marginTop="50dp"
-            android:paddingEnd="48dp"
-            android:text="PERMISSION"
-            android:background="@drawable/rounded_button"
-            android:textColor="#FFFFFF" />
+            android:background="@color/float_transparent"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal">
 
-        <!-- APPLY LEAVE Button -->
-        <Button
-            android:id="@+id/applyLeaveButton"
-            android:layout_width="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/attendanceButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:backgroundTint="@color/white"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="@dimen/_5sdp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/rounded_button_white_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/dash_menu_icon_size"
+                        android:layout_height="@dimen/dash_menu_icon_size"
+                        android:src="@drawable/dash_item_atten"
+                        android:scaleType="fitXY"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/logoImageView"
+                        android:text="Attendance"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textColor="@color/font_color"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/permissionButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:backgroundTint="@color/white"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="@dimen/_5sdp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/rounded_button_white_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/dash_menu_icon_size"
+                        android:layout_height="@dimen/dash_menu_icon_size"
+                        android:src="@drawable/dash_item_permission"
+                        android:scaleType="fitXY"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/logoImageView"
+                        android:text="Permission"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textColor="@color/font_color"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:paddingStart="48dp"
-            android:layout_marginTop="50dp"
-            android:paddingEnd="48dp"
-            android:text="APPLY LEAVE"
-            android:background="@drawable/rounded_button"
-            android:textColor="#FFFFFF" />
+            android:background="@color/float_transparent"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/applyLeaveButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:backgroundTint="@color/white"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="@dimen/_5sdp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/rounded_button_white_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/dash_menu_icon_size"
+                        android:layout_height="@dimen/dash_menu_icon_size"
+                        android:src="@drawable/dash_item_apply_leave"
+                        android:scaleType="fitXY"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/logoImageView"
+                        android:text="Apply Leave"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textColor="@color/font_color"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:backgroundTint="@color/white"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="@dimen/_5sdp"
+                android:visibility="invisible"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:id="@+id/dummyButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/rounded_button_white_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/dash_menu_icon_size"
+                        android:layout_height="@dimen/dash_menu_icon_size"
+                        android:src="@drawable/dash_item_atten"
+                        android:scaleType="fitXY"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/logoImageView"
+                        android:text="Attendance"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textColor="@color/purple_500"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
     </LinearLayout>
 
