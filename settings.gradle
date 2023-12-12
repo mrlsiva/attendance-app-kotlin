@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "vasanthamXM"
-include(":app",":library")
+include(":app",":sequence",":calendar")//
  

@@ -161,7 +161,7 @@ class AttendanceFragment : Fragment() {
                 val responseBody = response.body?.string()
                 val json = JSONObject(responseBody)
                 val data = json.getJSONObject("data")
-               if (data.getInt("atStatus") == 0) {
+              /* if (data.getInt("atStatus") == 0) {
                     binding.punchLayout.visibility = View.GONE
                 } else if (data.getInt("atStatus") == 1) {
                     binding.punchToday.text = "Punch In"
@@ -173,7 +173,7 @@ class AttendanceFragment : Fragment() {
                 } else {
                     binding.punchLayout.visibility = View.GONE
                     binding.attendanceTaken.visibility = View.VISIBLE
-                }
+                }*/
                 pDialog.dismiss()
             } catch (e: Exception) {
                 e.printStackTrace()

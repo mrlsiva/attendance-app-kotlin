@@ -150,16 +150,14 @@ class SelfieAttendance : AppCompatActivity() {
             return File.createTempFile(
                 "image",
                 ".jpg",
-                getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
-            )
+                getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS))
         }catch (e:Exception) {
             e.printStackTrace()
         }
         return File.createTempFile(
             "image",
             ".jpg",
-            getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
-        )
+            getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS))
     }
 
     private fun showNextActivity(output: ImageCapture.OutputFileResults) {
@@ -173,6 +171,8 @@ class SelfieAttendance : AppCompatActivity() {
 //        intent.putExtra("capturedImage", inputData)
         intent.putExtra("imageURL", outputFile.absolutePath)
         intent.putExtra("imagename", outputFile.name)
+        Toast.makeText(applicationContext,outputFile.absolutePath,Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext,outputFile.name,Toast.LENGTH_LONG).show()
         startActivity(intent)
         finish()
     }

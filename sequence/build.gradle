@@ -6,12 +6,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion(31)
+    compileSdk 33
     namespace 'com.transferwise.sequencelayout'
     defaultConfig {
         minSdkVersion(16)
         targetSdkVersion(31)
         setProperty("archivesBaseName", "com.transferwise.sequencelayout-${versionName}")
+        versionName buildToolsVersion
     }
 
     buildTypes {
@@ -20,14 +21,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+    buildFeatures {
+        viewBinding = true
     }
+
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    buildToolsVersion '30.0.0'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
