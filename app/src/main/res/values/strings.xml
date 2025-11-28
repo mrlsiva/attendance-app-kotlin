@@ -1,15 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="app_name">Attendance</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Name</string>
-    <string name="nav_header_subtitle">Designation</string>
+    <string name="nav_header_subtitle">Role</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
+    <string name="save">Save</string>
     <string name="menu_home">Vasantham</string>
     <string name="menu_gallery">Attendance Logs</string>
     <string name="menu_slideshow">Attendance</string>
+    <string name="permission">Permission</string>
+    <string name="apply_leave">Apply Leave</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -19,4 +22,22 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_users">Users</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_profile">Profile</string>
+
+
+    <string name="internet_not_connect_tex">OOPS!</string>
+    <string name="Retry_to_connect">No Internet connection found \n Check your connetion</string>
+    <string name="Retry_button_text">Try again></string>
+
+
+    <string name="sample_name">Mr.Ravi Kumar</string>
+    <string name="sample_designation">Manager</string>
+
+    <string name="in_app_snack_bar_message" translatable="false">Update almost finished!</string>
+    <string name="in_app_snack_bar_action_title" translatable="false">RESTART</string>
 </resources>

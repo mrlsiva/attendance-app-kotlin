@@ -7,8 +7,11 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:theme="@style/Theme.VasanthamXM.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
@@ -18,10 +21,22 @@
             android:background="@color/white"
             app:titleTextColor="@color/black"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/Theme.VasanthamXM.PopupOverlay" />
+            app:popupTheme="@style/Theme.VasanthamXM.PopupOverlay">
+
+            <ImageView
+                android:id="@+id/toolbar_end_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/admin_add_shift"
+                android:padding="8dp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_gravity="end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main" />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 t_main" />
+    <include layout="@layout/content_main" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

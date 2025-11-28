@@ -7,15 +7,25 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.android.play.core.appupdate.AppUpdateManager
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.slings.vasantham.support.InAppUpdate
 
 
-class SplashScreen : AppCompatActivity() {
+class SplashScreen : BaseActivity() {
+    private lateinit var appUpdateManager: AppUpdateManager
+    private var IsForceUpdate: Boolean = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_screen)
+        try {
+            appUpdateManager = AppUpdateManagerFactory.create(this)
+            checkForForceUpdates()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (hasCameraStoragePermissions()) {
                 // Permissions are already granted, proceed with a delay
@@ -30,6 +40,18 @@ class SplashScreen : AppCompatActivity() {
             } else {
                 requestCameraAndWriteStoragePermissions()
             }
+        }
+    }
+
+    private fun checkForForceUpdates() {
+        if (IsForceUpdate) {
+            //ImmediateUpdate
+            appUpdateManager = AppUpdateManagerFactory.create(this);
+            InAppUpdate.setImmediateUpdate(appUpdateManager, this);
+        } else {
+            //FlexibleUpdate
+            appUpdateManager = AppUpdateManagerFactory.create(this);
+            InAppUpdate.setFlexibleUpdate(appUpdateManager, this);
         }
     }
 
@@ -64,13 +86,22 @@ class SplashScreen : AppCompatActivity() {
         )
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (IsForceUpdate) {
+            InAppUpdate.setImmediateUpdateOnResume(appUpdateManager, this);
+        } else {
+            InAppUpdate.setFlexibleUpdateOnResume(appUpdateManager, this);
+        }
+    }
+
     private fun delayAndContinue() {
         Handler().postDelayed({
-            if(Util.getPreference(applicationContext,"userId","").equals("")){
+            if (Util.getPreference(applicationContext, "userId", "").isNullOrEmpty()) {
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
-            }else{
+            } else {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -97,7 +128,7 @@ class SplashScreen : AppCompatActivity() {
                     ).show()
                     // You might want to close the app or take appropriate action here
                 }
-            }else{
+            } else {
                 if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                     // Permissions granted, proceed with a delay before continuing
                     delayAndContinue()

@@ -2,11 +2,13 @@ package com.slings.vasantham
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.net.Uri
 
 object Util {
         /*
 	 * Return shared preference value as string
 	 */
+         var profileUri: Uri? = null
     @JvmStatic
         fun getPreference(mContext: Context, key: String?, defaultValue: String?): String? {
             val preferences = mContext.getSharedPreferences(Common.Companion.appName, 0)

@@ -14,7 +14,6 @@ data class AttendanceLogResponse(
 data class LogData(
     val current_page: Int,
     val data: List<AttendanceEntry>,
-    // ... other fields
 )
 
 data class AttendanceEntry(

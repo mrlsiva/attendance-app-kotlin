@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FCFCFC">
+
+  <!--  <include android:id="@+id/toolbar_layer" layout="@layout/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>-->
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Logo ImageView -->
+
+            <!-- Username InputLayout -->
+
+            <TextView
+                android:id="@+id/empIdTx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Emp ID"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/empIdEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/empIdTx"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/edittext_rounded_border"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center_vertical"
+                android:hint="Enter Emp ID"
+                android:paddingStart="@dimen/_10sdp"
+                android:textSize="@dimen/create_user_edit_box_padding_bottom"
+                android:paddingTop="@dimen/edit_box_padding_top"
+                android:paddingBottom="@dimen/edit_box_padding_bottom"
+                android:textColor="@color/black"
+                android:textColorHint="@color/purple_500" />
+
+            <!--   </com.google.android.material.textfield.TextInputLayout>-->
+
+            <!-- Password InputLayout -->
+            <TextView
+                android:id="@+id/nameTx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/empIdEt"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Name"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/nameEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nameTx"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/edittext_rounded_border"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Enter Name"
+                android:textSize="@dimen/create_user_edit_box_padding_bottom"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/edit_box_padding_top"
+                android:paddingBottom="@dimen/edit_box_padding_bottom"
+                android:textColor="@color/black"
+                android:textColorHint="@color/purple_500" />
+
+            <TextView
+                android:id="@+id/emailTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nameEt"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Email"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/emailET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/emailTv"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/edittext_rounded_border"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Enter Email"
+                android:textSize="@dimen/create_user_edit_box_padding_bottom"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/edit_box_padding_top"
+                android:paddingBottom="@dimen/edit_box_padding_bottom"
+                android:textColor="@color/black"
+                android:textColorHint="@color/purple_500" />
+
+            <TextView
+                android:id="@+id/mobileTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/emailET"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Mobile"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/mobileET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mobileTv"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/edittext_rounded_border"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Enter Mobile"
+                android:textSize="@dimen/create_user_edit_box_padding_bottom"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/edit_box_padding_top"
+                android:paddingBottom="@dimen/edit_box_padding_bottom"
+                android:textColor="@color/black"
+                android:textColorHint="@color/purple_500" />
+
+            <TextView
+                android:id="@+id/genderTx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mobileET"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Gender"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/genderET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/genderTx"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/edittext_rounded_border"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Enter Gender"
+                android:paddingStart="@dimen/_10sdp"
+                android:textSize="@dimen/create_user_edit_box_padding_bottom"
+                android:paddingTop="@dimen/edit_box_padding_top"
+                android:paddingBottom="@dimen/edit_box_padding_bottom"
+                android:textColor="@color/black"
+                android:textColorHint="@color/purple_500" />
+
+            <TextView
+                android:id="@+id/dobTx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/genderET"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="DOB"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/dobET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dobTx"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/edittext_rounded_border"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Enter DOB"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/edit_box_padding_top"
+                android:textSize="@dimen/create_user_edit_box_padding_bottom"
+                android:paddingBottom="@dimen/edit_box_padding_bottom"
+                android:textColor="@color/black"
+                android:textColorHint="@color/purple_500" />
+
+            <TextView
+                android:id="@+id/shiftTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dobET"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Shift"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/shiftED"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shiftTV"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/edittext_rounded_border"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Enter Shift"
+                android:inputType="textPassword"
+                android:textSize="@dimen/create_user_edit_box_padding_bottom"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/edit_box_padding_top"
+                android:paddingBottom="@dimen/edit_box_padding_bottom"
+                android:textColor="@color/black"
+                android:textColorHint="@color/purple_500" />
+
+            <TextView
+                android:id="@+id/passwordTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shiftED"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="New Password"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/passwordED"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/passwordTV"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/edittext_rounded_border"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Enter password"
+                android:textSize="@dimen/create_user_edit_box_padding_bottom"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/edit_box_padding_top"
+                android:paddingBottom="@dimen/edit_box_padding_bottom"
+                android:textColor="@color/black"
+                android:textColorHint="@color/purple_500" />
+
+            <TextView
+                android:id="@+id/designTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/passwordED"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Designation"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/designET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/designTv"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/edittext_rounded_border"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Select"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/edit_box_padding_top"
+                android:paddingBottom="@dimen/edit_box_padding_bottom"
+                android:textSize="@dimen/create_user_edit_box_padding_bottom"
+                android:textColor="@color/black"
+                android:textColorHint="@color/purple_500" />
+
+            <TextView
+                android:id="@+id/dateOJTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/designET"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Date of Joining"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/dojET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dateOJTV"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/edittext_rounded_border"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Select"
+                android:textSize="@dimen/create_user_edit_box_padding_bottom"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/edit_box_padding_top"
+                android:paddingBottom="@dimen/edit_box_padding_bottom"
+                android:textColor="@color/black"
+                android:textColorHint="@color/purple_500" />
+
+            <TextView
+                android:id="@+id/statusTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dojET"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Status"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/statusET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/statusTv"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/edittext_rounded_border"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Select"
+                android:paddingStart="@dimen/_10sdp"
+                android:textSize="@dimen/create_user_edit_box_padding_bottom"
+                android:paddingTop="@dimen/edit_box_padding_top"
+                android:paddingBottom="@dimen/edit_box_padding_bottom"
+                android:textColor="@color/black"
+                android:textColorHint="@color/purple_500" />
+
+            <!-- Submit Button -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/statusET"
+                android:layout_marginBottom="@dimen/_50sdp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/cancelBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_border_btn"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="Cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@color/theme_blue" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/saveBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_button"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="Save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

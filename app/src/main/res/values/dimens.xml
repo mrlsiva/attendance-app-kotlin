@@ -13,4 +13,17 @@
     <dimen name="bottom_layout_camera">@dimen/_60sdp</dimen>
 
     <dimen name="dash_menu_icon_size">@dimen/_24sdp</dimen>
+
+    <dimen name="profile_icon">@dimen/_24sdp</dimen>
+
+    <dimen name="edit_box_padding_top">@dimen/_10sdp</dimen>
+    <dimen name="edit_box_padding_bottom">@dimen/_10sdp</dimen>
+    <dimen name="create_user_edit_box_padding_bottom">@dimen/_9sdp</dimen>
+
+    <dimen name="ad_user_view_edit_et_txsize">@dimen/_12sdp</dimen>
+
+    <dimen name="keyline">4dp</dimen>
+    <dimen name="keyline_x2">8dp</dimen>
+    <dimen name="keyline_x4">16dp</dimen>
+    <dimen name="elevation_card_resting">1dp</dimen>
 </resources>

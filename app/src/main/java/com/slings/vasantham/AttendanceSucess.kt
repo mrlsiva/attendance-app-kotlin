@@ -1,21 +1,24 @@
 package com.slings.vasantham
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.StrictMode
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
-import okhttp3.OkHttpClient
+//import okhttp3.OkHttpClient
 import java.text.ParseException
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 
-class AttendanceSucess : AppCompatActivity() {
+class AttendanceSucess : BaseActivity() {
 
-    private val client = OkHttpClient()
+//    private val client = OkHttpClient()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.attendance_success)
@@ -39,18 +42,17 @@ class AttendanceSucess : AppCompatActivity() {
         } catch (e: ParseException) {
             e.printStackTrace()
         }
-
-        goHome.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
         if (id == android.R.id.home) {
-            // Handle the back button press here
+            val currentDate = LocalDate.now()
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val formattedDate = currentDate.format(formatter)
             val intent = Intent(this, AttendanceSuccessDetail::class.java)
+            intent.putExtra("date",formattedDate)
             startActivity(intent)
             finish()
             return true

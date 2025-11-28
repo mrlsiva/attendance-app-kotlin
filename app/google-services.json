@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "827870433972",
+    "project_id": "vasantham-7d3a1",
+    "storage_bucket": "vasantham-7d3a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827870433972:android:e62777addfe3ff2bb37de1",
+        "android_client_info": {
+          "package_name": "com.slings.vasantham"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQDUtg7PJxZaUrVXWXplPLspo5pSAuTnw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

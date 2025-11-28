@@ -16,7 +16,7 @@
             android:id="@+id/circularImageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/splash_logo"
+            android:src="@drawable/menu_user_profile"
             android:background="@drawable/circular_background_white" />
 
         <LinearLayout

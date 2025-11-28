@@ -59,7 +59,7 @@
             android:id="@+id/title3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Username"
+            android:text="User Name"
             android:textStyle="bold"
             android:fontFamily="@font/poppins_regular"
             android:layout_marginTop="@dimen/_20sdp"
@@ -67,33 +67,34 @@
             android:textColor="@color/black"
             android:textColorHint="@android:color/darker_gray" />
 
- <!--       <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/usernameInputLayout"
-            style="@style/NoBottomLineTextInputLayout"
+        <!--       <com.google.android.material.textfield.TextInputLayout
+                   android:id="@+id/usernameInputLayout"
+                   style="@style/NoBottomLineTextInputLayout"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:paddingTop="5dp"
+                   app:hintEnabled="false"
+                   android:layout_below="@+id/title3"
+                   android:layout_marginBottom="8dp">-->
+     <!--   9994333605-->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/usernameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            app:hintEnabled="false"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"
+            android:textColorHint="@color/purple_500"
+            android:paddingTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingStart="@dimen/_10sdp"
+            android:hint="Enter user name"
+            android:text=""
             android:layout_below="@+id/title3"
-            android:layout_marginBottom="8dp">-->
+            android:background="@drawable/edittext_rounded_border" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/usernameEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:gravity="center_vertical"
-                android:textColorHint="@color/purple_500"
-                android:paddingTop="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:paddingBottom="@dimen/_10sdp"
-                android:fontFamily="@font/poppins_regular"
-                android:paddingStart="@dimen/_10sdp"
-                android:hint="Enter user name"
-                android:layout_below="@+id/title3"
-                android:background="@drawable/edittext_rounded_border" />
-
-     <!--   </com.google.android.material.textfield.TextInputLayout>-->
+        <!--   </com.google.android.material.textfield.TextInputLayout>-->
 
         <!-- Password InputLayout -->
         <TextView
@@ -115,6 +116,7 @@
             android:text="Forgot Password?"
             android:gravity="right"
             android:textSize="13sp"
+            android:visibility="gone"
             android:fontFamily="@font/poppins_regular"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/usernameEditText"
@@ -123,36 +125,71 @@
             android:textColorHint="@android:color/darker_gray" />
 
 
-<!--        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/passwordInputLayout"
-            style="@style/NoBottomLineTextInputLayout"
+        <!--        <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passwordInputLayout"
+                    style="@style/NoBottomLineTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/title4"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp">-->
+
+
+        <!-- </com.google.android.material.textfield.TextInputLayout>
+ -->
+        <!-- Submit Button -->
+        <!--  <androidx.appcompat.widget.AppCompatEditText
+              android:id="@+id/passwordEditText"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/title4"
+              android:layout_marginTop="5dp"
+              android:background="@drawable/edittext_rounded_border"
+              android:fontFamily="@font/poppins_regular"
+              android:hint="Enter password"
+              android:inputType="textPassword"
+              android:paddingStart="@dimen/_10sdp"
+              android:paddingTop="@dimen/_10sdp"
+              android:paddingBottom="@dimen/_10sdp"
+              android:textColor="@color/black"
+              android:textColorHint="@color/purple_500" />
+  -->
+<!--        vasantham123-->
+        <RelativeLayout
+            android:id="@+id/passwordEditTextLayer"
             android:layout_width="match_parent"
             android:layout_below="@+id/title4"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:gravity="center"
-            android:layout_marginBottom="16dp">-->
+            android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/passwordEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:hint="Enter password"
-                android:textColorHint="@color/purple_500"
-                android:layout_below="@+id/title4"
-                android:paddingTop="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:paddingBottom="@dimen/_10sdp"
-                android:fontFamily="@font/poppins_regular"
-                android:paddingStart="@dimen/_10sdp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/edittext_rounded_border"
-                android:inputType="textPassword" />
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Enter password"
+                android:text=""
+                android:inputType="textPassword"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingEnd="40dp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/purple_500" />
 
+            <ImageView
+                android:id="@+id/passwordToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/passwordEditText"
+                android:layout_centerVertical="true"
+                android:src="@drawable/eye_icon_strike"
+                android:padding="@dimen/_10sdp"
+                android:contentDescription="Toggle password visibility" />
+        </RelativeLayout>
 
-       <!-- </com.google.android.material.textfield.TextInputLayout>
--->
-        <!-- Submit Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/submitBtn"
             android:layout_width="fill_parent"
@@ -160,7 +197,7 @@
             android:layout_marginTop="@dimen/_20sdp"
             android:paddingTop="15dp"
             android:fontFamily="@font/poppins_regular"
-            android:layout_below="@+id/passwordEditText"
+            android:layout_below="@+id/passwordEditTextLayer"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:paddingBottom="15dp"

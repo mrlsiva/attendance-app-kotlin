@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.slings.vasantham">
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -8,9 +9,13 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
+        android:name=".AppController"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -33,7 +38,8 @@
             android:name=".LoginActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.VasanthamXM.NoActionBar" />
+            android:theme="@style/Theme.VasanthamXM.NoActionBar" >
+        </activity>
         <activity
             android:name=".ui.attendance.SelfieAttendance"
             android:exported="true"
@@ -44,6 +50,17 @@
             android:exported="true"
             android:label="Self Confirm Activity"
             android:theme="@style/Theme.VasanthamXM.NoActionBar"/>
+        <activity
+            android:name=".ui.attendance.PermissionSelfieAttendance"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.VasanthamXM.NoActionBar" />
+        <activity
+            android:name=".ui.attendance.PermissionSelfConfirmActivity"
+            android:exported="true"
+            android:label="Self Confirm Activity"
+            android:theme="@style/Theme.VasanthamXM.NoActionBar"/>
+
         <activity
             android:name=".AttendanceSucess"
             android:exported="true"
@@ -57,23 +74,42 @@
             android:label="Self Confirm Activity"
             android:theme="@style/Theme.VasanthamXM.NoActionBar" />
         <activity
+            android:name=".NoInternetActivity"
+            android:exported="true"
+            android:label="Self Confirm Activity"
+            android:theme="@style/Theme.VasanthamXM.NoActionBar" />
+    <activity
             android:name=".AttendanceSuccessDetail"
             android:exported="true"
             android:label="Self Confirm Activity"
             android:theme="@style/Theme.VasanthamXM.NoActionBar" />
+        <activity
+            android:name=".ImageCaptureCropActivity"
+            android:exported="true"
+            android:label="Self Confirm Activity"
+            android:theme="@style/Theme.VasanthamXM.NoActionBar" />
+
+
+
+        <!--<activity
+            android:name=".admin.AdminMainActivity"
+            android:exported="true"
+            android:label=""
+            android:theme="@style/Theme.VasanthamXM.NoActionBar"/>-->
+
         <activity
             android:name=".SplashScreen"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.VasanthamXM.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.MAIN"  />
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
         </activity>
-
+        <meta-data
+            android:name="firebase_crash_collection_enabled"
+            android:value="false" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.slings.vasantham.fileprovider"
@@ -83,6 +119,17 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

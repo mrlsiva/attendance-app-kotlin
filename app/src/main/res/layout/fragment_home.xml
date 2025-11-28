@@ -14,35 +14,32 @@
         android:gravity="top"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
+        <include android:id="@+id/topbar"
+            layout="@layout/profile_bar"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/logoImageView"
-            android:layout_marginTop="@dimen/_60sdp"
-            android:text="System tools"
-            android:textColor="@color/purple_500"
-            android:textColorHint="@android:color/darker_gray"
-            android:textStyle="bold"
-            android:layout_marginStart="@dimen/_15sdp"/>
+            android:layout_width="match_parent"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/float_transparent"
-            android:paddingTop="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/attendanceButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_15sdp"
                 android:backgroundTint="@color/white"
-                app:cardUseCompatPadding="true"
                 app:cardCornerRadius="@dimen/_5sdp"
+                android:elevation="0dp"
+                app:cardElevation="0dp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -78,10 +75,12 @@
                 android:id="@+id/permissionButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_18sdp"
                 android:backgroundTint="@color/white"
-                app:cardUseCompatPadding="true"
                 app:cardCornerRadius="@dimen/_5sdp"
+                android:elevation="0dp"
+                app:cardElevation="0dp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -118,20 +117,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/float_transparent"
-            android:paddingTop="@dimen/_10sdp"
+
             android:paddingBottom="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/applyLeaveButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
                 android:backgroundTint="@color/white"
-                app:cardUseCompatPadding="true"
                 app:cardCornerRadius="@dimen/_5sdp"
+                android:elevation="0dp"
+                app:cardElevation="0dp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -164,13 +164,14 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/usersButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:backgroundTint="@color/white"
-                app:cardUseCompatPadding="true"
-                app:cardCornerRadius="@dimen/_5sdp"
                 android:visibility="invisible"
+                app:cardCornerRadius="@dimen/_5sdp"
+
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -188,22 +189,135 @@
                     <ImageView
                         android:layout_width="@dimen/dash_menu_icon_size"
                         android:layout_height="@dimen/dash_menu_icon_size"
-                        android:src="@drawable/dash_item_atten"
+                        android:src="@drawable/dash_user"
                         android:scaleType="fitXY"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/logoImageView"
-                        android:text="Attendance"
+                        android:text="User"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:textColor="@color/purple_500"
+                        android:textColor="@color/font_color"
                         android:textColorHint="@android:color/darker_gray"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/float_transparent"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/designaButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:backgroundTint="@color/white"
+                app:cardUseCompatPadding="true"
+                android:visibility="invisible"
+                app:cardCornerRadius="@dimen/_5sdp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/rounded_button_white_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/dash_menu_icon_size"
+                        android:layout_height="@dimen/dash_menu_icon_size"
+                        android:src="@drawable/dash_designa"
+                        android:scaleType="fitXY"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/logoImageView"
+                        android:text="Designation"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textColor="@color/font_color"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/shiftButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:backgroundTint="@color/white"
+                app:cardUseCompatPadding="true"
+                android:visibility="invisible"
+                app:cardCornerRadius="@dimen/_5sdp"
+
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:id="@+id/dummyButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/rounded_button_white_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/dash_menu_icon_size"
+                        android:layout_height="@dimen/dash_menu_icon_size"
+                        android:src="@drawable/dash_shift_time"
+                        android:scaleType="fitXY"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/logoImageView"
+                        android:text="Shift Time"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textColor="@color/font_color"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
     </LinearLayout>
+
+
+    <com.zagori.bottomnavbar.BottomNavBar
+        android:id="@+id/bottom_nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:bn_background_color="@color/white"
+        app:bn_item_color="@drawable/bottom_nav_item_state"
+        app:bn_menu="@menu/bottom_nav_menu"
+        app:bn_curve_vertical_offset="40dp"
+        app:bn_curve_margin="6dp"
+        app:bn_curve_rounded_corner_radius="8dp"
+        app:bn_fab_size="normal"
+        app:is_fab_visible="true"
+        app:bn_fab_menu_index="1"
+        app:bn_fab_background_color="@color/theme_blue"
+        app:bn_fab_icon_color="@color/white" />
+    <!-- bn_curve_vertical_offset home center curve-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

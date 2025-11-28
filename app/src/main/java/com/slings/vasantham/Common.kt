@@ -8,6 +8,8 @@ class Common {
     companion object {
         var appName = "apx_VideoLock"
 //      var URL = "https://funaadai.in/"
-        var URL = "https://maduraivasantham.com/"
+        var URL = "https://maduraivasantham.com/api/"
+
+        var RedirectTo = ""
     }
 }
