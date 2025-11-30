@@ -33,13 +33,15 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="The Title of this Step"/>
+            tools:text="The Title of this Step"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:textColor="@color/black"
             tools:text="More text More text More text\nMore text More text More text More text More text "/>
     </LinearLayout>
 </merge>

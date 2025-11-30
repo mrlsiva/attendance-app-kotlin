@@ -1,8 +1,11 @@
 package com.applandeo.materialcalendarview
 
+import android.content.Context
 import android.graphics.drawable.Drawable
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
+import androidx.annotation.IntegerRes
+import com.applandeo.materialcalendarview.utils.parseColor
 import java.util.*
 
 /*
@@ -24,4 +27,6 @@ class CalendarDay(val calendar: Calendar) {
     var selectedBackgroundResource: Int? = null
 
     var selectedBackgroundDrawable: Drawable? = null
+
+    var attendanceStatus: Int? = 0 //1 present //2 permission //3 absent
 }

@@ -1,5 +1,6 @@
 package com.applandeo.materialcalendarview.adapters
 
+import android.R
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,10 +10,12 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.applandeo.materialcalendarview.CalendarView
+import com.applandeo.materialcalendarview.databinding.CalendarViewDayBinding
+import com.applandeo.materialcalendarview.databinding.DatePickerDialogBinding
 import com.applandeo.materialcalendarview.exceptions.InvalidCustomLayoutException
 import com.applandeo.materialcalendarview.utils.*
-import kotlinx.android.synthetic.main.calendar_view_day.view.*
 import java.util.*
+
 
 private const val INVISIBLE_IMAGE_ALPHA = 0.12f
 
@@ -23,25 +26,26 @@ class CalendarDayAdapter(
         dates: MutableList<Date>,
         pageMonth: Int
 ) : ArrayAdapter<Date>(context, calendarProperties.itemLayoutResource, dates) {
-
     private val pageMonth = if (pageMonth < 0) 11 else pageMonth
 
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, view: View?, parent: ViewGroup): View {
-        val dayView = view
-                ?: LayoutInflater.from(context).inflate(calendarProperties.itemLayoutResource, parent, false)
+//        val dayView = view
+//                ?: LayoutInflater.from(context).inflate(calendarProperties.itemLayoutResource, parent, false)
+//        addView
+        var binding: CalendarViewDayBinding = CalendarViewDayBinding.inflate(LayoutInflater.from(context), parent,false)
 
         val day = GregorianCalendar().apply { time = getItem(position) }
 
-        dayView.dayIcon?.loadIcon(day)
+        binding.dayIcon?.loadIcon(day)
 
-        val dayLabel = dayView.dayLabel ?: throw InvalidCustomLayoutException
+        val dayLabel = binding.dayLabel ?: throw InvalidCustomLayoutException
 
         setLabelColors(dayLabel, day)
         dayLabel.typeface = calendarProperties.typeface
         dayLabel.text = day[Calendar.DAY_OF_MONTH].toString()
 
-        return dayView
+        return binding.root
     }
 
     private fun setLabelColors(dayLabel: TextView, day: Calendar) {

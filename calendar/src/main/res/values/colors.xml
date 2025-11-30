@@ -14,5 +14,11 @@
     <!--grey-->
     <color name="grey1">#676767</color>
     <color name="grey2">#B3B3B2</color>
+    <color name="grey3">#F8F8F8</color>
+
+    <color name="permissioncolor">#FF4B26</color>
+
+    <color name="leaveColor">#dc3545</color>
+    <color name="presentColor">#28a745</color>
 
 </resources>

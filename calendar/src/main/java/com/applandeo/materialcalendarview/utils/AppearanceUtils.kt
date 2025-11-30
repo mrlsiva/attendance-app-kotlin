@@ -4,13 +4,16 @@ import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.view.View
 import com.applandeo.materialcalendarview.R
-import kotlinx.android.synthetic.main.calendar_view.view.*
+import com.applandeo.materialcalendarview.databinding.CalendarViewBinding
 
-internal fun View.setAbbreviationsLabels(color: Int, firstDayOfWeek: Int) {
-    val labels = getAbbreviationsTextViews()
+internal fun View.setAbbreviationsLabels(
+    color: Int,
+    firstDayOfWeek: Int,
+    binding: CalendarViewBinding
+) {
+    val labels = getAbbreviationsTextViews(binding)
 
     val abbreviations = context.resources.getStringArray(R.array.material_calendar_day_abbreviations_array)
-
     labels.forEachIndexed { index, label ->
         label.text = abbreviations[(index + firstDayOfWeek - 1) % 7]
 
@@ -20,8 +23,8 @@ internal fun View.setAbbreviationsLabels(color: Int, firstDayOfWeek: Int) {
     }
 }
 
-internal fun View.setAbbreviationsLabelsSize(size: Float) {
-    val labels = getAbbreviationsTextViews()
+internal fun View.setAbbreviationsLabelsSize(size: Float,binding:CalendarViewBinding) {
+    val labels = getAbbreviationsTextViews(binding)
     val maxTextSize = resources.getDimensionPixelSize(R.dimen.abbreviation_text_size_max)
     labels.forEachIndexed { _, label ->
         if (size > 0.0 && size <= maxTextSize) {
@@ -30,66 +33,66 @@ internal fun View.setAbbreviationsLabelsSize(size: Float) {
     }
 }
 
-private fun View.getAbbreviationsTextViews() = listOf(
-        mondayLabel,
-        tuesdayLabel,
-        wednesdayLabel,
-        thursdayLabel,
-        fridayLabel,
-        saturdayLabel,
-        sundayLabel)
+private fun View.getAbbreviationsTextViews(binding:CalendarViewBinding) = listOf(
+    binding.mondayLabel,
+    binding.tuesdayLabel,
+    binding.wednesdayLabel,
+    binding.thursdayLabel,
+    binding.fridayLabel,
+    binding.saturdayLabel,
+    binding.sundayLabel)
 
-internal fun View.setTypeface(typeface: Typeface?) {
+internal fun View.setTypeface(typeface: Typeface?,binding:CalendarViewBinding) {
     if (typeface == null) return
-    getAbbreviationsTextViews().forEach { label ->
+    getAbbreviationsTextViews(binding).forEach { label ->
         label.typeface = typeface
     }
 }
 
-internal fun View.setHeaderColor(color: Int) {
+internal fun View.setHeaderColor(color: Int,binding:CalendarViewBinding) {
     if (color == 0) return
-    this.calendarHeader.setBackgroundColor(color)
+    binding.calendarHeader.setBackgroundColor(color)
 }
 
-internal fun View.setHeaderLabelColor(color: Int) {
+internal fun View.setHeaderLabelColor(color: Int,binding:CalendarViewBinding) {
     if (color == 0) return
-    this.currentDateLabel.setTextColor(color)
+    binding.currentDateLabel.setTextColor(color)
 }
 
-internal fun View.setHeaderTypeface(typeface: Typeface?) {
+internal fun View.setHeaderTypeface(typeface: Typeface?,binding:CalendarViewBinding) {
     if (typeface == null) return
-    this.currentDateLabel.typeface = typeface
+    binding.currentDateLabel.typeface = typeface
 }
 
-internal fun View.setAbbreviationsBarColor(color: Int) {
+internal fun View.setAbbreviationsBarColor(color: Int,binding:CalendarViewBinding) {
     if (color == 0) return
-    this.abbreviationsBar.setBackgroundColor(color)
+    binding.abbreviationsBar.setBackgroundColor(color)
 }
 
-internal fun View.setPagesColor(color: Int) {
+internal fun View.setPagesColor(color: Int,binding:CalendarViewBinding) {
     if (color == 0) return
-    this.calendarViewPager.setBackgroundColor(color)
+    binding.calendarViewPager.setBackgroundColor(color)
 }
 
-internal fun View.setPreviousButtonImage(drawable: Drawable?) {
+internal fun View.setPreviousButtonImage(drawable: Drawable?,binding:CalendarViewBinding) {
     if (drawable == null) return
-    this.previousButton.setImageDrawable(drawable)
+    binding.previousButton.setImageDrawable(drawable)
 }
 
-internal fun View.setForwardButtonImage(drawable: Drawable?) {
+internal fun View.setForwardButtonImage(drawable: Drawable?,binding:CalendarViewBinding) {
     if (drawable == null) return
-    this.forwardButton.setImageDrawable(drawable)
+    binding.forwardButton.setImageDrawable(drawable)
 }
 
-internal fun View.setHeaderVisibility(visibility: Int) {
-    this.calendarHeader.visibility = visibility
+internal fun View.setHeaderVisibility(visibility: Int,binding:CalendarViewBinding) {
+    binding.calendarHeader.visibility = visibility
 }
 
-internal fun View.setNavigationVisibility(visibility: Int) {
-    this.previousButton.visibility = visibility
-    this.forwardButton.visibility = visibility
+internal fun View.setNavigationVisibility(visibility: Int,binding:CalendarViewBinding) {
+    binding.previousButton.visibility = visibility
+    binding.forwardButton.visibility = visibility
 }
 
-internal fun View.setAbbreviationsBarVisibility(visibility: Int) {
-    this.abbreviationsBar.visibility = visibility
+internal fun View.setAbbreviationsBarVisibility(visibility: Int,binding:CalendarViewBinding) {
+    binding.abbreviationsBar.visibility = visibility
 }

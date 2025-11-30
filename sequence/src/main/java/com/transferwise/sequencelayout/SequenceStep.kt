@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.annotation.Dimension
 import androidx.annotation.StringRes
 import androidx.annotation.StyleRes
+import androidx.core.content.ContextCompat
 import androidx.core.view.doOnPreDraw
 import androidx.core.widget.TextViewCompat
 import kotlin.math.max
@@ -81,6 +82,8 @@ public class SequenceStep(context: Context?, attrs: AttributeSet?) : TableRow(co
         setupActive(attributes)
 
         attributes.recycle()
+        this.title.setTextColor(ContextCompat.getColor(context!!, R.color.black))
+        this.subtitle.setTextColor(ContextCompat.getColor(context, R.color.black))
     }
 
     /**

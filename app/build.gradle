@@ -13,10 +13,10 @@ android {
 
     defaultConfig {
         applicationId "com.slings.vasantham"
-        minSdk 26
-        targetSdk 34
-        versionCode 5
-        versionName "1.1.5"
+        minSdk 29
+        targetSdk 36
+        versionCode 6
+        versionName "1.1.6"
         multiDexEnabled true
     }
 

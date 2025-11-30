@@ -1,6 +1,181 @@
 package com.slings.vasantham.ui.attendance
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
+import android.content.ContentValues.TAG
+import android.content.Intent
+import android.graphics.BitmapFactory
+import android.net.Uri
+import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
+import android.view.MenuItem
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.Toolbar
+import androidx.camera.core.*
+import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.camera.view.PreviewView
+import androidx.core.content.ContextCompat
+import com.slings.vasantham.BaseActivity
+import com.slings.vasantham.R
+import kotlinx.coroutines.DelicateCoroutinesApi
+import java.io.ByteArrayOutputStream
+import java.io.InputStream
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
+
+@OptIn(DelicateCoroutinesApi::class)
+class SelfieAttendance : BaseActivity() {
+
+    private lateinit var takePictureLauncher: ActivityResultLauncher<Intent>
+    private var capturedImageUri: Uri? = null
+    private var imageCapture: ImageCapture? = null
+    private lateinit var cameraExecutor: ExecutorService
+    private var camera: Camera? = null
+    private lateinit var cameraView: PreviewView
+
+    @SuppressLint("RestrictedApi")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.selfie_attendance)
+
+        initUI()
+        initCamera()
+    }
+
+    private fun initUI() {
+        val btnTakeSelfie = findViewById<ImageView>(R.id.btnTakeSelfie)
+        val tvGoBack = findViewById<ImageView>(R.id.tvGoBack)
+        cameraView = findViewById(R.id.cameraView)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        toolbar.title = "Go Back"
+
+        btnTakeSelfie.setOnClickListener { takePicture() }
+        tvGoBack.setOnClickListener { finish() }
+    }
+
+    private fun initCamera() {
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+        cameraProviderFuture.addListener({
+            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+
+            val preview = Preview.Builder().build().also {
+                it.setSurfaceProvider(cameraView.surfaceProvider)
+            }
+
+            imageCapture = ImageCapture.Builder().build()
+
+            try {
+                camera?.cameraControl?.enableTorch(false)
+                cameraProvider.unbindAll()
+
+                val cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
+
+                camera = cameraProvider.bindToLifecycle(
+                    this, cameraSelector, preview, imageCapture
+                )
+
+            } catch (exc: Exception) {
+                Log.e(TAG, "Use case binding failed", exc)
+            }
+
+        }, ContextCompat.getMainExecutor(this))
+
+        cameraExecutor = Executors.newSingleThreadExecutor()
+    }
+
+    // -------------------------------
+    //  MEDIASTORE URI CREATOR (NEW)
+    // -------------------------------
+    private fun createImageUri(): Uri? {
+        val filename = "selfie_${System.currentTimeMillis()}.jpg"
+
+        val values = ContentValues().apply {
+            put(MediaStore.Downloads.DISPLAY_NAME, filename)
+            put(MediaStore.Downloads.MIME_TYPE, "image/jpeg")
+            put(MediaStore.Downloads.RELATIVE_PATH, "Download/Attendance/")
+            put(MediaStore.Downloads.IS_PENDING, 1)
+        }
+
+        return contentResolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values)
+    }
+
+    // -------------------------------
+    //  TAKE PICTURE (UPDATED)
+    // -------------------------------
+    private fun takePicture() {
+        val imageCapture = imageCapture ?: return
+
+        val imageUri = createImageUri()
+        if (imageUri == null) {
+            Toast.makeText(this, "Failed to create file!", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val outputStream = contentResolver.openOutputStream(imageUri)
+        if (outputStream == null) {
+            Toast.makeText(this, "Cannot open output stream!", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val outputOptions = ImageCapture.OutputFileOptions.Builder(outputStream).build()
+
+        imageCapture.takePicture(
+            outputOptions,
+            ContextCompat.getMainExecutor(this),
+            object : ImageCapture.OnImageSavedCallback {
+
+                override fun onError(exc: ImageCaptureException) {
+                    Log.e(TAG, "Capture failed: ${exc.message}", exc)
+                }
+
+                override fun onImageSaved(result: ImageCapture.OutputFileResults) {
+
+                    // Mark file as finished
+                    val values = ContentValues().apply {
+                        put(MediaStore.Downloads.IS_PENDING, 0)
+                    }
+
+                    contentResolver.update(imageUri, values, null, null)
+
+                    capturedImageUri = imageUri
+                    showNextActivity(capturedImageUri!!)
+                }
+            }
+        )
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    // -------------------------------
+    // PASS URI TO NEXT ACTIVITY
+    // -------------------------------
+    private fun showNextActivity(imageUri: Uri) {
+        val intent = Intent(this, SelfConfirmActivity::class.java)
+        intent.putExtra("imageUri", imageUri.toString())
+        startActivity(intent)
+        finish()
+    }
+}
+
+
+
+/*package com.slings.vasantham.ui.attendance
+
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Bitmap
@@ -177,4 +352,4 @@ class SelfieAttendance : BaseActivity() {
         startActivity(intent)
         finish()
     }
-}
+}*/

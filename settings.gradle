@@ -13,6 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "vasanthamXM"
-include(":app",":sequence",":calendar")//
- 
+rootProject.name = "SampleXM"
+include ':app',':sequence',':calendar',':bottomnavbar' ,':cropper'

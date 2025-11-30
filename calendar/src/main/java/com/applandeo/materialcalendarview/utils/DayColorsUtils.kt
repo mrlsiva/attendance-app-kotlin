@@ -76,9 +76,9 @@ fun setCurrentMonthDayColors(calendar: Calendar, dayLabel: TextView?, calendarPr
 
     setNormalDayColors(calendar, dayLabel, calendarProperties)
 
-    if (calendar.isToday) {
-        setTodayColors(calendar, dayLabel, calendarProperties)
-    }
+//    if (calendar.isToday) {
+//        setTodayColors(calendar, dayLabel, calendarProperties)
+//    }
 
     if (calendar.isEventDayWithLabelColor(calendarProperties)) {
         setEventDayColors(calendar, dayLabel, calendarProperties)
@@ -97,19 +97,19 @@ private fun setTodayColors(calendar: Calendar, dayLabel: TextView, calendarPrope
 
     if (calendarDayBackgroundRes != null) {
         dayLabel.setDayColors(
-                textColor = calendarProperties.todayLabelColor,
+                textColor = calendarProperties.todayLabelColor!!,
                 typeface = calendarProperties.todayTypeface,
                 backgroundRes = calendarDayBackgroundRes
         )
     } else if (calendarDayBackgroundDrawable != null) {
         dayLabel.setDayColors(
-                textColor = calendarProperties.todayLabelColor,
+                textColor = calendarProperties.todayLabelColor!!,
                 typeface = calendarProperties.todayTypeface
         )
         dayLabel.setBackgroundDrawable(calendarDayBackgroundDrawable)
     } else {
         dayLabel.setDayColors(
-                textColor = calendarProperties.todayLabelColor,
+                textColor = calendarProperties.todayLabelColor!!,
                 typeface = calendarProperties.todayTypeface,
                 backgroundRes = R.drawable.background_transparent
         )
